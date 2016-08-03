@@ -16,8 +16,8 @@ namespace WebApiBasics.Data.Maps
 			Map(x => x.UnitPrice).Column("UnitPrice").Not.Nullable();
 			Map(x => x.UnitPriceDiscount).Column("UnitPriceDiscount").Not.Nullable();
 			Map(x => x.LineTotal).Column("LineTotal").Not.Nullable();
-			Map(x => x.RowGuid).Column("rowguid").Not.Nullable().Unique();
-			Map(x => x.ModifiedDate).Column("ModifiedDate").Not.Nullable();
+			Map(x => x.RowGuid).Column("rowguid").Not.Nullable().Unique().Generated.Insert();
+            Map(x => x.ModifiedDate).Column("ModifiedDate").Not.Nullable();
         }
     }
 }

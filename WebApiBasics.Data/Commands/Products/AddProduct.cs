@@ -13,7 +13,6 @@ namespace WebApiBasics.Data.Commands.Products
             using (var session = Database.Instance.OpenSession())
             {
                 var record = Mapper.Map<Product, Records.Product>(request.Product);
-                record.RowGuid = Guid.NewGuid();
                 session.SaveOrUpdate(record);
                 return Mapper.Map<Records.Product, Product>(record);
             }
