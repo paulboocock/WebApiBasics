@@ -6,6 +6,7 @@ using WebApiBasics.WebApp.Models;
 
 namespace WebApiBasics.WebApp.Controllers
 {
+    [RoutePrefix("api/products")]
     public class ProductsController : ApiController
     {
         private readonly IProductsService _productsService;
@@ -15,14 +16,26 @@ namespace WebApiBasics.WebApp.Controllers
             _productsService = productsService;
         }
 
-        public IEnumerable<Product> Get()
+        [Route("")]
+        [HttpGet]
+        public IEnumerable<Product> GetProducts()
         {
             return Mapper.Map<IList<Core.Types.Product>, IList<Product>>(_productsService.GetProducts());
         }
 
-        public Product Get(int id)
+        [Route("{id:int}", Name = "GetProductById")]
+        [HttpGet]
+        public Product GetProduct(int id)
         {
             return Mapper.Map<Core.Types.Product, Product>(_productsService.GetProduct(id));
+        }
+
+        [Route("")]
+        [HttpPost]
+        public IHttpActionResult AddProduct(Product product)
+        {
+            var createdProduct = _productsService.AddProduct(Mapper.Map<Product, Core.Types.Product>(product));
+            return CreatedAtRoute("GetProductById", new { Id = createdProduct.ProductId }, Mapper.Map<Core.Types.Product, Product>(createdProduct));
         }
     }
 }

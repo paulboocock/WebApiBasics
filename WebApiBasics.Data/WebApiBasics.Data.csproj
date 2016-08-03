@@ -62,8 +62,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Queries\GetProduct.cs" />
-    <Compile Include="Queries\GetAllProducts.cs" />
+    <Compile Include="Commands\Products\AddProduct.cs" />
+    <Compile Include="Queries\Products\GetProduct.cs" />
+    <Compile Include="Queries\Products\GetAllProducts.cs" />
     <Compile Include="Database.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Records\Address.cs" />
@@ -90,9 +91,7 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Commands\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\WebApiBasics.Core\WebApiBasics.Core.csproj">
       <Project>{e23d2529-a5a5-4494-be7d-98ba9e257088}</Project>
