@@ -2,7 +2,8 @@
 using System.Web.Http;
 using AutoMapper;
 using WebApiBasics.Core.Services;
-using WebApiBasics.WebApp.Models;
+using WebApiBasics.Core.Types;
+using WebApiBasics.WebApp.Responses;
 
 namespace WebApiBasics.WebApp.Controllers
 {
@@ -15,14 +16,20 @@ namespace WebApiBasics.WebApp.Controllers
             _productsService = productsService;
         }
 
-        public IEnumerable<Product> Get()
+        public ProductsResponse Get()
         {
-            return Mapper.Map<IList<Core.Types.Product>, IList<Product>>(_productsService.GetProducts());
+            return new ProductsResponse
+            {
+                Data = Mapper.Map<IList<Product>, IList<Models.Product>>(_productsService.GetProducts())
+            };
         }
 
-        public Product Get(int id)
+        public ProductResponse Get(int id)
         {
-            return Mapper.Map<Core.Types.Product, Product>(_productsService.GetProduct(id));
+            return new ProductResponse
+            {
+                Data = Mapper.Map<Product, Models.Product>(_productsService.GetProduct(id))
+            };
         }
     }
 }
