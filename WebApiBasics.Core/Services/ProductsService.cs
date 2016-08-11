@@ -9,6 +9,7 @@ namespace WebApiBasics.Core.Services
     {
         IList<Product> GetProducts();
         Product GetProduct(int productId);
+        Product AddProduct(Product product);
     }
 
     public class ProductsService : IProductsService
@@ -30,6 +31,14 @@ namespace WebApiBasics.Core.Services
             return _mediator.Send(new ProductRequest
             {
                 ProductId = productId
+            });
+        }
+
+        public Product AddProduct(Product product)
+        {
+            return _mediator.Send(new AddProductRequest
+            {
+                Product = product
             });
         }
     }

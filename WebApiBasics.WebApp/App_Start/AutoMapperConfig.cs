@@ -1,5 +1,4 @@
 ﻿using AutoMapper;
-using WebApiBasics.Data.Records;
 using SimpleInjector;
 
 namespace WebApiBasics.WebApp
@@ -11,8 +10,12 @@ namespace WebApiBasics.WebApp
             Mapper.Initialize(cfg =>
             {
                 cfg.ConstructServicesUsing(container.GetInstance);
-                cfg.CreateMap<Product, Core.Types.Product>();
+
+                cfg.CreateMap<Data.Records.Product, Core.Types.Product>();
+                cfg.CreateMap<Core.Types.Product, Data.Records.Product>();
+
                 cfg.CreateMap<Core.Types.Product, Models.Product>();
+                cfg.CreateMap<Models.Product, Core.Types.Product>();
             });
         }
     }

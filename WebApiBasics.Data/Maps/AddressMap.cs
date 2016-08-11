@@ -18,8 +18,8 @@ namespace WebApiBasics.Data.Maps
 			Map(x => x.StateProvince).Column("StateProvince").Not.Nullable();
 			Map(x => x.CountryRegion).Column("CountryRegion").Not.Nullable();
 			Map(x => x.PostalCode).Column("PostalCode").Not.Nullable();
-			Map(x => x.RowGuid).Column("rowguid").Not.Nullable().Unique();
-			Map(x => x.ModifiedDate).Column("ModifiedDate").Not.Nullable();
+			Map(x => x.RowGuid).Column("rowguid").Not.Nullable().Unique().Generated.Insert();
+            Map(x => x.ModifiedDate).Column("ModifiedDate").Not.Nullable();
 			HasMany(x => x.CustomerAddress).KeyColumn("AddressID");
 			HasMany(x => x.BillingSalesOrderHeaders).KeyColumn("BillToAddressID");
 			HasMany(x => x.ShippingSalesOrderHeaders).KeyColumn("ShipToAddressID");

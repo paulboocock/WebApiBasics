@@ -1,12 +1,11 @@
-﻿using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
 using AutoMapper.QueryableExtensions;
 using MediatR;
 using NHibernate.Linq;
 using WebApiBasics.Core.Requests;
 using WebApiBasics.Core.Types;
 
-namespace WebApiBasics.Data.Queries
+namespace WebApiBasics.Data.Queries.Products
 {
     public class GetProduct : IRequestHandler<ProductRequest, Product>
     {

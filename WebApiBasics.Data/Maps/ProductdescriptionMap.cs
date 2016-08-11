@@ -10,8 +10,8 @@ namespace WebApiBasics.Data.Maps
 			Table("SalesLT.ProductDescription");
 			Id(x => x.ProductDescriptionId).GeneratedBy.Identity().Column("ProductDescriptionID");
 			Map(x => x.Description).Column("Description").Not.Nullable();
-			Map(x => x.RowGuid).Column("rowguid").Not.Nullable().Unique();
-			Map(x => x.ModifiedDate).Column("ModifiedDate").Not.Nullable();
+			Map(x => x.RowGuid).Column("rowguid").Not.Nullable().Unique().Generated.Insert();
+            Map(x => x.ModifiedDate).Column("ModifiedDate").Not.Nullable();
 			HasMany(x => x.ProductModelProductDescription).KeyColumn("ProductDescriptionID");
         }
     }

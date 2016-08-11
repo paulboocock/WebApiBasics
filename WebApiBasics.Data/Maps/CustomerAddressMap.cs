@@ -13,8 +13,8 @@ namespace WebApiBasics.Data.Maps
 			References(x => x.Customer).Column("CustomerID");
 			References(x => x.Address).Column("AddressID");
 			Map(x => x.AddressType).Column("AddressType").Not.Nullable();
-			Map(x => x.RowGuid).Column("rowguid").Not.Nullable().Unique();
-			Map(x => x.ModifiedDate).Column("ModifiedDate").Not.Nullable();
+			Map(x => x.RowGuid).Column("rowguid").Not.Nullable().Unique().Generated.Insert();
+            Map(x => x.ModifiedDate).Column("ModifiedDate").Not.Nullable();
         }
     }
 }

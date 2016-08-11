@@ -7,6 +7,7 @@ using WebApiBasics.WebApp.Responses;
 
 namespace WebApiBasics.WebApp.Controllers
 {
+    [RoutePrefix("api/products")]
     public class ProductsController : ApiController
     {
         private readonly IProductsService _productsService;
@@ -16,6 +17,8 @@ namespace WebApiBasics.WebApp.Controllers
             _productsService = productsService;
         }
 
+        [Route("")]
+        [HttpGet]
         public ProductsResponse Get()
         {
             return new ProductsResponse
@@ -24,12 +27,22 @@ namespace WebApiBasics.WebApp.Controllers
             };
         }
 
+        [Route("{id:int}", Name = "GetProductById")]
+        [HttpGet]
         public ProductResponse Get(int id)
         {
             return new ProductResponse
-            {
+        {
                 Data = Mapper.Map<Product, Models.Product>(_productsService.GetProduct(id))
             };
+        }
+
+        [Route("")]
+        [HttpPost]
+        public IHttpActionResult AddProduct(Models.Product product)
+        {
+            var createdProduct = _productsService.AddProduct(Mapper.Map<Models.Product, Product>(product));
+            return CreatedAtRoute("GetProductById", new { Id = createdProduct.ProductId }, Mapper.Map<Product, Models.Product>(createdProduct));
         }
     }
 }

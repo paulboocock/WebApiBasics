@@ -6,7 +6,7 @@ using NHibernate.Linq;
 using WebApiBasics.Core.Requests;
 using WebApiBasics.Core.Types;
 
-namespace WebApiBasics.Data.Queries
+namespace WebApiBasics.Data.Queries.Products
 {
     public class GetAllProducts : IRequestHandler<AllProductsRequest, IList<Product>>
     {

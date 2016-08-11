@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using MediatR;
-using WebApiBasics.Data.Queries;
 using SimpleInjector;
+using WebApiBasics.Data.Queries.Products;
 
 namespace WebApiBasics.WebApp
 {

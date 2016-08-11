@@ -13,8 +13,8 @@ namespace WebApiBasics.Data.Maps
 			             .KeyProperty(x => x.Culture, "Culture");
 			References(x => x.ProductModel).Column("ProductModelID");
 			References(x => x.ProductDescription).Column("ProductDescriptionID");
-			Map(x => x.RowGuid).Column("rowguid").Not.Nullable().Unique();
-			Map(x => x.ModifiedDate).Column("ModifiedDate").Not.Nullable();
+			Map(x => x.RowGuid).Column("rowguid").Not.Nullable().Unique().Generated.Insert();
+            Map(x => x.ModifiedDate).Column("ModifiedDate").Not.Nullable();
         }
     }
 }

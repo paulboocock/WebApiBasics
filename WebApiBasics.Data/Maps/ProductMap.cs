@@ -23,7 +23,7 @@ namespace WebApiBasics.Data.Maps
 			Map(x => x.DiscontinuedDate).Column("DiscontinuedDate");
 			Map(x => x.ThumbNailPhoto).Column("ThumbNailPhoto");
 			Map(x => x.ThumbnailPhotoFileName).Column("ThumbnailPhotoFileName");
-			Map(x => x.RowGuid).Column("rowguid").Not.Nullable().Unique();
+			Map(x => x.RowGuid).Column("rowguid").Not.Nullable().Unique().Generated.Insert();
 			Map(x => x.ModifiedDate).Column("ModifiedDate").Not.Nullable();
 			HasMany(x => x.SalesOrderDetails).KeyColumn("ProductID");
         }

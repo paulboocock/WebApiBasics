@@ -21,8 +21,8 @@ namespace WebApiBasics.Data.Maps
 			Map(x => x.Phone).Column("Phone");
 			Map(x => x.PasswordHash).Column("PasswordHash").Not.Nullable();
 			Map(x => x.PasswordSalt).Column("PasswordSalt").Not.Nullable();
-			Map(x => x.RowGuid).Column("rowguid").Not.Nullable().Unique();
-			Map(x => x.ModifiedDate).Column("ModifiedDate").Not.Nullable();
+			Map(x => x.RowGuid).Column("rowguid").Not.Nullable().Unique().Generated.Insert();
+            Map(x => x.ModifiedDate).Column("ModifiedDate").Not.Nullable();
 			HasMany(x => x.CustomerAddresses).KeyColumn("CustomerID");
 			HasMany(x => x.SalesOrderHeaders).KeyColumn("CustomerID");
         }
