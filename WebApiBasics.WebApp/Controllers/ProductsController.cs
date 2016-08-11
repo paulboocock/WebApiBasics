@@ -32,7 +32,7 @@ namespace WebApiBasics.WebApp.Controllers
         public ProductResponse Get(int id)
         {
             return new ProductResponse
-        {
+            {
                 Data = Mapper.Map<Product, Models.Product>(_productsService.GetProduct(id))
             };
         }
